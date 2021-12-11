@@ -21,4 +21,4 @@ For detailed explanation on how things work, check out the [documentation](https
 
 ## How to Setup your .env
 
-- Get your google and facebook Oauth keys first (you're a developer so go do some research, I'm too lazy to put the instructions in here lol). Then put your id and secret keys on their respective variables under Auth Section.
+- Get your google and facebook Oauth keys first (you're a developer so go do some research, I'm too lazy to put the instructions in here lol). Then put your id and secret keys on their respective variables under Auth Section (Must be the same Oauth keys with the backend).
