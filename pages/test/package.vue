@@ -1,0 +1,96 @@
+<template>
+  <div>
+    <button @click="post">post</button>
+    <button @click="deleteItem">delete</button>
+    <button @click="patchData">patch</button>
+    <button @click="getData">get</button>
+
+    <button
+      class="bg-blue-600 hover:bg-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+      type="submit"
+      @click.prevent="awit"
+    >
+      awit
+    </button>
+  </div>
+</template>
+<script>
+export default {
+  methods: {
+    post() {
+      let jsondata = JSON.stringify({
+        awit: "awit",
+      });
+      let formData = new FormData();
+      formData.append("name", "awit");
+      formData.append("price", 16.96);
+      formData.append("description", "awit lods");
+      formData.append("days", 14);
+      formData.append("access", jsondata);
+      this.$axios
+        .$post("/package", formData)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+    deleteItem() {
+      this.$axios
+        .$delete("/package/2")
+        .then((response) => {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+    patchData() {
+      let jsondata = JSON.stringify({
+        awit: "awit ka nalang lods",
+      });
+
+      let formData = {
+        _method: "patch",
+        name: "awit kaasdd",
+        price: 69,
+        description: "description",
+        days: 69,
+        access: jsondata,
+      };
+
+      this.$axios
+        .$post("/package/1", formData)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+    getData() {
+      this.$axios
+        .$get("/package/1")
+        .then((response) => {
+          console.log(response);
+
+          console.log(JSON.parse(response.access));
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+    awit() {
+      this.$axios
+        .$get("/awit")
+        .then((response) => {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+  },
+};
+</script>
