@@ -20,11 +20,8 @@ export default {
     post() {
       let formData = new FormData();
       formData.append("name", "awit");
-      formData.append("price", 16000);
-      formData.append("description", "awit lods");
-      formData.append("business_id", 1);
       this.$axios
-        .$post("/service", formData)
+        .$post("/businessCategory", formData)
         .then((response) => {
           console.log(response);
         })
@@ -34,7 +31,7 @@ export default {
     },
     deleteItem() {
       this.$axios
-        .$delete("/service/1")
+        .$delete("/businessCategory/13")
         .then((response) => {
           console.log(response);
         })
@@ -43,16 +40,10 @@ export default {
         });
     },
     patchData() {
-      let formData = {
-        _method: "patch",
-        name: "awit kaasdd",
-        price: 69,
-        description: "description",
-        business_id: 1,
-      };
-
+      let formData = new FormData();
+      formData.append("name", "awit");
       this.$axios
-        .$post("/service/1", formData)
+        .$post("/businessCategory", formData)
         .then((response) => {
           console.log(response);
         })
@@ -62,7 +53,7 @@ export default {
     },
     getData() {
       this.$axios
-        .$get("/service/1")
+        .$get("/businessCategory/13")
         .then((response) => {
           console.log(response);
         })
