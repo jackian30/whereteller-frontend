@@ -15,7 +15,14 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [
+    // { src: "./plugins/echo", mode: "client" }
+  ],
+  // echo: {
+  //   authModule: true,
+  //   connectOnLogin: false,
+  //   disconnectOnLogout: true,
+  // },
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -25,6 +32,21 @@ export default {
     // https://go.nuxtjs.dev/tailwindcss
     "@nuxtjs/tailwindcss",
     // "nuxt-vite",
+
+    // "@nuxtjs/laravel-echo",
+    // [
+    //   "@nuxtjs/laravel-echo",
+    //   {
+    //     broadcaster: "pusher",
+    //     key: "local",
+    //     wsHost: "localhost",
+    //     wsPort: 6001,
+    //     encrypted: true,
+    //     forceTLS: false,
+    //     disableStats: true,
+    //     // authEndpoint: "http://localhost/broadcasting/auth",
+    //   },
+    // ],
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -37,6 +59,7 @@ export default {
   ],
 
   auth: {
+    plugins: [{ src: "./plugins/echo", mode: "client" }],
     redirect: {
       login: "/login",
       logout: "/",

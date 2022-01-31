@@ -1,12 +1,18 @@
 <template>
-  <div>
-    <h1>awit lods lol</h1>
-    <nuxt-link :to="'/auth/register/'"> Register </nuxt-link>
-  </div>
+  <div>asdasd</div>
 </template>
 
 <script>
 export default {
-  methods: {},
+  async mounted() {
+    await this.$echo
+      .private(`App.Models.User.${this.$auth.$state.user.id}`)
+      .listen("TestEvent", (e) => {
+        console.log(e);
+      });
+  },
+  beforeDestroy() {
+    this.$echo.leave(`App.Models.User.${this.$auth.$state.user.id}`);
+  },
 };
 </script>
