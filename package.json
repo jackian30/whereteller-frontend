@@ -17,7 +17,7 @@
     "laravel-echo": "^1.11.3",
     "nuxt": "^2.15.7",
     "nuxt-vite": "^0.2.4",
-    "pusher-js": "^7.0.3"
+    "pusher-js": "^7.0.4"
   },
   "devDependencies": {
     "@nuxtjs/laravel-echo": "^2.0.0-alpha.5",

@@ -5,14 +5,18 @@
 <script>
 export default {
   async mounted() {
+    // if (this.$auth.loggedIn) {
     await this.$echo
-      .private(`App.Models.User.${this.$auth.$state.user.id}`)
-      .listen("TestEvent", (e) => {
+      .private(`User.Notification.${this.$auth.$state.user.id}`)
+      .listen("UserNotification", (e) => {
         console.log(e);
       });
+    // }
   },
   beforeDestroy() {
-    this.$echo.leave(`App.Models.User.${this.$auth.$state.user.id}`);
+    if (this.$auth.loggedIn) {
+      this.$echo.leave(`User.Notification.${this.$auth.$state.user.id}`);
+    }
   },
 };
 </script>

@@ -3,20 +3,16 @@ import defu from "defu";
 
 window.Pusher = require("pusher-js");
 
-export default ({ $auth, $axios }, inject) => {
-  let headers = $auth.$storage.getCookies()["XSRF-TOKEN"];
+export default async ({ $auth, $axios }, inject) => {
+  let headers = await $auth.$storage.getCookies()["XSRF-TOKEN"];
 
-  const echo = new Echo({
+  const echo = await new Echo({
     broadcaster: "pusher",
     key: "local", // .env
     wsHost: "localhost",
     wsPort: 6001,
     forceTLS: false,
     disableStats: true,
-    authModule: true,
-    connectOnLogin: true,
-    disconnectOnLogout: true,
-    // authEndpoint: "http://localhost/broadcasting/auth",
     auth: {
       headers: {
         "X-XSRF-TOKEN": headers,
@@ -48,12 +44,12 @@ export default ({ $auth, $axios }, inject) => {
     },
   });
 
-  inject("echo", echo);
+  await inject("echo", echo);
 };
 
 async function getHeaders($auth, options) {
   let headers = $auth.headers || {};
-  console.log($auth.strategy.options.name);
+
   if ($auth) {
     const strategy = $auth.strategy;
     if (strategy.options.name === "laravelSanctum") {
