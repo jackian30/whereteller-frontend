@@ -6,7 +6,6 @@
 <script>
 export default {
   mounted() {
-    console.log(this.$route.query);
     this.$axios
       .$get(this.$route.query.verify_url)
       .then((response) => {

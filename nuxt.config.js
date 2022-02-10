@@ -59,7 +59,7 @@ export default {
   ],
 
   auth: {
-    plugins: [{ src: "./plugins/echo", mode: "client" }],
+    // plugins: [{ src: "./plugins/echo", mode: "client" }],
     redirect: {
       login: "/login",
       logout: "/",
